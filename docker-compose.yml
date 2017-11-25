@@ -1,0 +1,19 @@
+# define version of docker compose config version
+version: '3'
+
+# define services
+services:
+  # define service with flask app
+  flask-app:
+    # use Dockerfile from `flask-app-src` directory
+    build:
+      ./flask-app-src
+    # bind container ports to host ports (container:host)
+    ports:
+      - "8080:5000"
+    volumes:
+      - ./flask-app-src:/code/
+
+  # define service with redis server
+  redis:
+    image: "redis:latest"
