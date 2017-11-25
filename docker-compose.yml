@@ -17,3 +17,18 @@ services:
   # define service with redis server
   redis:
     image: "redis:latest"
+
+  # define service with nginx for serving static
+  # and reverse proxy to server apps
+  reverseproxy:
+    build:
+      ./nginx-reverseproxy
+    ports:
+      - "8081:80"
+    volumes:
+      - static-volume:/static/
+    restart: always
+
+# define volumes
+volumes:
+  static-volume:
