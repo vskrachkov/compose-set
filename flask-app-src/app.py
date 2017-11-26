@@ -12,12 +12,12 @@ REDIS = {
 app = Flask(__name__)
 redis = Redis(host=REDIS['LOCATION'][0][0], port=REDIS['LOCATION'][0][1])
 
-@app.route('/')
+@app.route('/api')
 def index():
     hits = redis.incr('hits')
     return f'Hello from flask app: {hits} ###'
 
-@app.route('/<int:number>')
+@app.route('/api/<int:number>')
 def num(number):
     return f'Your num is {number}'
 
