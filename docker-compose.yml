@@ -29,3 +29,10 @@ services:
       - ./nginx-reverseproxy/config:/etc/nginx/conf.d/
       - ./fe-app/dist:/static/dist/
     restart: always
+
+  django-app:
+    build:
+      ./django-app-src
+    ports:
+      - "8082:80"
+    restart: always
