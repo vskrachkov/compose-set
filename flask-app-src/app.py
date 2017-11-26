@@ -3,14 +3,8 @@ from redis import Redis
 
 DEBUG = True
 
-REDIS = {
-    'LOCATION': [
-        ('redis', 6379)
-    ]
-}
-
 app = Flask(__name__)
-redis = Redis(host=REDIS['LOCATION'][0][0], port=REDIS['LOCATION'][0][1])
+redis = Redis(host='redis', port=6379)
 
 @app.route('/api')
 def index():
